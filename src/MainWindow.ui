@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>982</width>
+    <height>706</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="geen::GeenTextEditor" name="textEdit">
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>982</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit_2"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionAbout_QtTxtEdit"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuFormat">
+    <property name="title">
+     <string>Format</string>
+    </property>
+    <addaction name="actionLeft_Align"/>
+    <addaction name="actionRight_Align"/>
+    <addaction name="actionCenter_Align"/>
+    <addaction name="separator"/>
+    <addaction name="actionFont_Dialog"/>
+    <addaction name="actionColour_Dialog"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuFormat"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/new.png</normaloff>:/IconResource/icons/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/open.png</normaloff>:/IconResource/icons/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/Save.png</normaloff>:/IconResource/icons/Save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/saveas.png</normaloff>:/IconResource/icons/saveas.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save as ..</string>
+   </property>
+  </action>
+  <action name="actionExit_2">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/exit.png</normaloff>:/IconResource/icons/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/cut.png</normaloff>:/IconResource/icons/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/copy.png</normaloff>:/IconResource/icons/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/paste.png</normaloff>:/IconResource/icons/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/undo_256.png</normaloff>:/IconResource/icons/undo_256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/redo.png</normaloff>:/IconResource/icons/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionAbout_QtTxtEdit">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/Info.png</normaloff>:/IconResource/icons/Info.png</iconset>
+   </property>
+   <property name="text">
+    <string>About QtTxtEdit</string>
+   </property>
+   <property name="toolTip">
+    <string>About QtTxtEdit</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/aboutqt.png</normaloff>:/IconResource/icons/aboutqt.png</iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionLeft_Align">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/left_align.png</normaloff>:/IconResource/icons/left_align.png</iconset>
+   </property>
+   <property name="text">
+    <string>Left Align</string>
+   </property>
+  </action>
+  <action name="actionRight_Align">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/right_align.png</normaloff>:/IconResource/icons/right_align.png</iconset>
+   </property>
+   <property name="text">
+    <string>Right Align</string>
+   </property>
+  </action>
+  <action name="actionCenter_Align">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/center_align.png</normaloff>:/IconResource/icons/center_align.png</iconset>
+   </property>
+   <property name="text">
+    <string>Center Align</string>
+   </property>
+  </action>
+  <action name="actionFont_Dialog">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/changefont.png</normaloff>:/IconResource/icons/changefont.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fonts</string>
+   </property>
+   <property name="toolTip">
+    <string>Fonts</string>
+   </property>
+  </action>
+  <action name="actionColour_Dialog">
+   <property name="icon">
+    <iconset resource="iconresource.qrc">
+     <normaloff>:/IconResource/icons/colorwheel.png</normaloff>:/IconResource/icons/colorwheel.png</iconset>
+   </property>
+   <property name="text">
+    <string>Font Colour</string>
+   </property>
+   <property name="toolTip">
+    <string>Font Colour</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>geen::GeenTextEditor</class>
+   <extends>QTextEdit</extends>
+   <header>GeenTextEditor.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="iconresource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

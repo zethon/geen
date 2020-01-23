@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/IconResource">
+        <file>icons/copy.png</file>
+        <file>icons/cut.png</file>
+        <file>icons/exit.png</file>
+        <file>icons/Info.png</file>
+        <file>icons/new.png</file>
+        <file>icons/open.png</file>
+        <file>icons/paste.png</file>
+        <file>icons/redo.png</file>
+        <file>icons/Save.png</file>
+        <file>icons/saveas.png</file>
+        <file>icons/undo_256.png</file>
+        <file>icons/aboutqt.png</file>
+        <file>icons/bold.png</file>
+        <file>icons/italic.png</file>
+        <file>icons/underline.png</file>
+        <file>icons/left_align.png</file>
+        <file>icons/center_align.png</file>
+        <file>icons/right_align.png</file>
+        <file>icons/normal.png</file>
+        <file>icons/fontdialog.png</file>
+        <file>icons/changefont.png</file>
+        <file>icons/colorwheel.png</file>
+    </qresource>
+</RCC>
