@@ -9,6 +9,8 @@ class MainWindow;
 namespace geen
 {
 
+class GeenSyntaxHighlighter;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -18,11 +20,14 @@ public:
     ~MainWindow();
 
 private Q_SLOTS:
+    void on_actionExit_triggered();
+
 
 
 private:
     Ui::MainWindow *ui;
-    QString file_path;
+
+    GeenSyntaxHighlighter* _highlighter;
 };
 
 }

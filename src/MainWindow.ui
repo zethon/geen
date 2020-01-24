@@ -10,6 +10,11 @@
     <height>706</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>14</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -20,7 +25,7 @@
       <property name="font">
        <font>
         <family>Consolas</family>
-        <pointsize>11</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
      </widget>
@@ -33,7 +38,7 @@
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -46,7 +51,7 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
     <addaction name="separator"/>
-    <addaction name="actionExit_2"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -121,7 +126,7 @@
     <string>Save as ..</string>
    </property>
   </action>
-  <action name="actionExit_2">
+  <action name="actionExit">
    <property name="icon">
     <iconset resource="iconresource.qrc">
      <normaloff>:/IconResource/icons/exit.png</normaloff>:/IconResource/icons/exit.png</iconset>
@@ -259,5 +264,22 @@
  <resources>
   <include location="iconresource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>actionAbout_QtTxtEdit</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

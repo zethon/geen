@@ -26,13 +26,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setCentralWidget(ui->textEdit); // Removes the sidegaps from the text editor
-    GeenSyntaxHighlighter* highlighter = new GeenSyntaxHighlighter(ui->textEdit->document());
+    setCentralWidget(ui->textEdit);
+    _highlighter = new GeenSyntaxHighlighter(ui->textEdit->document());
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    QGuiApplication::exit();
 }
 
 }
