@@ -23,7 +23,6 @@ private Q_SLOTS:
     void on_actionExit_triggered();
 
 
-
 private:
     Ui::MainWindow *ui;
 

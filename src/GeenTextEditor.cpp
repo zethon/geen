@@ -29,11 +29,11 @@ void GeenTextEditor::keyReleaseEvent(QKeyEvent* e)
 
 void GeenTextEditor::processLine(const QString& line)
 {
-    //if (line.endsWith("="))
-    //{
-        QScriptValue value = _scriptEngine.evaluate(line);
-        qDebug() << "result: " << value.toString();
-    //}
+    QScriptValue value = _scriptEngine.evaluate(line);
+    qDebug() << "result: " << value.toString();
+
+    this->moveCursor(QTextCursor::EndOfLine);
+    this->textCursor().insertText("->" + value.toString());
 }
 
 }
