@@ -1,13 +1,13 @@
 #pragma once
 
 #include <QTextEdit>
+#include <QScriptEngine>
 
 namespace geen
 {
 
 class GeenTextEditor : public QTextEdit
 {
-    Q_OBJECT
 
 public:
     using QTextEdit::QTextEdit;
@@ -16,6 +16,15 @@ public:
         : QTextEdit(parent)
     { 
     }
+
+protected:
+    void keyReleaseEvent(QKeyEvent* e) override;
+
+private:
+    void processLine(const QString& line);
+
+    QScriptEngine   _scriptEngine;
+
 };
 
 } // namespace

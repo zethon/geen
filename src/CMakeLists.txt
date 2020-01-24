@@ -1,5 +1,5 @@
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Script REQUIRED)
 
 set(SOURCE_FILES
     GeenSyntaxHighlighter.cpp
@@ -29,6 +29,7 @@ add_executable(geen
     ${RESOURCE_FILES}
 )
 
-target_link_libraries(geen 
+target_link_libraries(geen
+    Qt5::Script
     Qt5::Widgets
 )
