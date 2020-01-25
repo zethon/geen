@@ -29,11 +29,25 @@ void GeenTextEditor::keyReleaseEvent(QKeyEvent* e)
 
 void GeenTextEditor::processLine(const QString& line)
 {
-    QScriptValue value = _scriptEngine.evaluate(line);
-    qDebug() << "result: " << value.toString();
+    if (line.isEmpty()) return;
 
-    this->moveCursor(QTextCursor::EndOfLine);
-    this->textCursor().insertText("->" + value.toString());
+    QScriptValue value = _scriptEngine.evaluate(line);
+
+    moveCursor(QTextCursor::EndOfLine);
+    auto oldformatter = currentCharFormat();
+
+    QTextCharFormat formatter;
+    formatter.setFontWeight(QFont::Bold);
+    formatter.setFontItalic(true);
+    formatter.setForeground(Qt::lightGray);
+
+    setCurrentCharFormat(formatter);
+
+    textCursor().insertText(" ");
+    textCursor().insertImage(_arrow);
+    textCursor().insertText(" " + value.toString() + "\n");
+    
+    setCurrentCharFormat(oldformatter);
 }
 
 }

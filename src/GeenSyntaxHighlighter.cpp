@@ -1,3 +1,5 @@
+#include <QTextDocument>
+
 #include "GeenSyntaxHighlighter.h"
 
 namespace geen
@@ -37,6 +39,14 @@ void GeenSyntaxHighlighter::highlightBlock(const QString& text)
             {
                 start = i;
                 state = CStyleComment;
+            }
+            else if (text.mid(i, 1) == "("
+                || text.mid(i, 1) == ")")
+            {
+                QTextCharFormat format;
+                format.setFontWeight(QFont::Bold);
+                format.setForeground(Qt::darkGreen);
+                setFormat(i, 1, format);
             }
         }
     }

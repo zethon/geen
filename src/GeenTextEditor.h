@@ -13,8 +13,10 @@ public:
     using QTextEdit::QTextEdit;
 
     explicit GeenTextEditor(QWidget* parent)
-        : QTextEdit(parent)
-    { 
+        : QTextEdit(parent),
+          _arrow{ ":/IconResource/icons/result_arrow.png" }
+    {
+        _arrow = _arrow.scaledToHeight(10);
     }
 
 protected:
@@ -24,6 +26,7 @@ private:
     void processLine(const QString& line);
 
     QScriptEngine   _scriptEngine;
+    QImage          _arrow;
 
 };
 

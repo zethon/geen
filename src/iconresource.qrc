@@ -22,5 +22,6 @@
         <file>icons/fontdialog.png</file>
         <file>icons/changefont.png</file>
         <file>icons/colorwheel.png</file>
+        <file>icons/result_arrow.png</file>
     </qresource>
 </RCC>

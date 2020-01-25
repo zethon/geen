@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>geen</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -25,7 +25,7 @@
       <property name="font">
        <font>
         <family>Consolas</family>
-        <pointsize>14</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
      </widget>
@@ -38,7 +38,7 @@
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
