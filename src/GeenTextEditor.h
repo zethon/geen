@@ -1,23 +1,29 @@
 #pragma once
 
 #include <QTextEdit>
-#include <QScriptEngine>
+#include <QJSEngine>
 
 namespace geen
 {
+
+class BaseConverter : public QObject
+{
+    Q_OBJECT
+
+public:
+    BaseConverter(QObject* parent = nullptr) : QObject(parent) {};
+
+    Q_INVOKABLE QString convert(int value, unsigned int base)
+    {
+        return QString::number(value, base);
+    }
+};
 
 class GeenTextEditor : public QTextEdit
 {
 
 public:
-    using QTextEdit::QTextEdit;
-
-    explicit GeenTextEditor(QWidget* parent)
-        : QTextEdit(parent),
-          _arrow{ ":/IconResource/icons/result_arrow.png" }
-    {
-        _arrow = _arrow.scaledToHeight(10);
-    }
+    explicit GeenTextEditor(QWidget* parent);
 
 protected:
     void keyReleaseEvent(QKeyEvent* e) override;
@@ -25,7 +31,7 @@ protected:
 private:
     void processLine(const QString& line);
 
-    QScriptEngine   _scriptEngine;
+    QJSEngine       _scriptEngine;
     QImage          _arrow;
 
 };

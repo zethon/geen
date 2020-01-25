@@ -9,6 +9,16 @@
 namespace geen
 {
 
+GeenTextEditor::GeenTextEditor(QWidget* parent)
+    : QTextEdit(parent),
+    _arrow{ ":/IconResource/icons/result_arrow.png" }
+{
+    _arrow = _arrow.scaledToHeight(10);
+
+    QJSValue ext = _scriptEngine.newQObject(new BaseConverter());
+    _scriptEngine.globalObject().setProperty("base", ext.property("convert"));
+}
+
 void GeenTextEditor::keyReleaseEvent(QKeyEvent* e)
 {
     if (e->key() == Qt::Key_Enter
@@ -31,7 +41,7 @@ void GeenTextEditor::processLine(const QString& line)
 {
     if (line.isEmpty()) return;
 
-    QScriptValue value = _scriptEngine.evaluate(line);
+    QJSValue value = _scriptEngine.evaluate(line);
 
     moveCursor(QTextCursor::EndOfLine);
     auto oldformatter = currentCharFormat();

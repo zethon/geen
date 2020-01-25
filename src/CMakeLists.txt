@@ -28,12 +28,12 @@ add_executable(geen
 )
 
 find_package(Qt5 REQUIRED COMPONENTS
-    Script
+    Qml
     Widgets
 )
 
 target_link_libraries(geen
-    Qt5::Script
+    Qt5::Qml
     Qt5::Widgets
 )
 
