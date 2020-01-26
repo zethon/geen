@@ -86,17 +86,6 @@ void GeenTextEditor::lineNumberAreaPaintEvent(QPaintEvent* event)
 
 int GeenTextEditor::lineNumberAreaWidth()
 {
-    //int digits = 1;
-    //int max = std::max(1, blockCount());
-    //while (max >= 10) 
-    //{
-    //    max /= 10;
-    //    ++digits;
-    //}
-
-    //int space = 3 + fontMetrics().horizontalAdvance(QLatin1Char('9')) * digits;
-
-    ////return space * 5;
     return fontMetrics().horizontalAdvance(QLatin1Char('9')) * 6;
 }
 
@@ -126,7 +115,7 @@ void GeenTextEditor::resizeEvent(QResizeEvent* event)
     _lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
 }
 
-void GeenTextEditor::updateLineNumberAreaWidth(int newBlockCount)
+void GeenTextEditor::updateLineNumberAreaWidth(int)
 {
     setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
 }
@@ -138,12 +127,18 @@ void GeenTextEditor::highlightCurrentLine()
 void GeenTextEditor::updateLineNumberArea(const QRect& rect, int dy)
 {
     if (dy)
+    {
         _lineNumberArea->scroll(0, dy);
+    }
     else
+    {
         _lineNumberArea->update(0, rect.y(), _lineNumberArea->width(), rect.height());
+    }
 
     if (rect.contains(viewport()->rect()))
+    {
         updateLineNumberAreaWidth(0);
+    }
 }
 
 void GeenTextEditor::processLine(const QString& line)
@@ -159,6 +154,8 @@ void GeenTextEditor::processLine(const QString& line)
     formatter.setFontWeight(QFont::Bold);
     formatter.setFontItalic(true);
     formatter.setForeground(Qt::lightGray);
+
+    textCursor().insertBlock();
 
     setCurrentCharFormat(formatter);
     textCursor().insertText(" => " + value.toString() + "\n");

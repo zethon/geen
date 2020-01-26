@@ -12,6 +12,8 @@
 #include <QColorDialog>
 #include <QSyntaxHighlighter>
 #include <QtGui>
+#include <QLabel>
+#include <QSpacerItem>
 
 #include "GeenTextEditor.h"
 #include "GeenSyntaxHighlighter.h"
@@ -36,10 +38,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textEdit->setFont(editorFont);
 #endif
 
+    _blockCount = new QLabel(this);
+    _blockCount->setStyleSheet("QLabel { color: #FFFFFF; }");
+    _blockCount->setText(QString("Tot %1").arg(ui->textEdit->blockCount()));
+    ui->statusBar->addWidget(_blockCount);
+    ui->statusBar->setStyleSheet("QStatusBar { background: #007ACD; color: #FFFFFF; }");
+
     QObject::connect(ui->textEdit, &QPlainTextEdit::blockCountChanged,
-        [](int newBlockCount)
+        [this](int newBlockCount)
         {
             std::cout << "newBlockCount: " << newBlockCount << '\n';
+            _blockCount->setText(QString("Tot %1").arg(newBlockCount));
         });
 }
 

@@ -12,7 +12,7 @@ GeenSyntaxHighlighter::GeenSyntaxHighlighter(QTextDocument* document)
 
 void GeenSyntaxHighlighter::highlightBlock(const QString& text)
 {
-    static std::vector<QChar> redSymbols = { '+', '-', '/' , '*', '=' };
+    static std::vector<QChar> redSymbols = { '+', '-', '/' , '*' };
 
     enum { NormalState = -1, CStyleComment };
 

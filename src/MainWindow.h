@@ -2,9 +2,12 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
+
+class QLabel;
 
 namespace geen
 {
@@ -26,7 +29,8 @@ private Q_SLOTS:
 private:
     Ui::MainWindow *ui;
 
-    GeenSyntaxHighlighter* _highlighter;
+    QLabel*                     _blockCount;
+    GeenSyntaxHighlighter*      _highlighter;
 };
 
 }
