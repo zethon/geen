@@ -28,9 +28,6 @@
         <pointsize>11</pointsize>
        </font>
       </property>
-      <property name="acceptRichText">
-       <bool>false</bool>
-      </property>
      </widget>
     </item>
    </layout>
@@ -260,7 +257,7 @@
  <customwidgets>
   <customwidget>
    <class>geen::GeenTextEditor</class>
-   <extends>QTextEdit</extends>
+   <extends>QPlainTextEdit</extends>
    <header>GeenTextEditor.h</header>
   </customwidget>
  </customwidgets>

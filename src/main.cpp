@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     geen::MainWindow w;
+
+    w.setWindowTitle(QObject::tr("geen text tool"));
     w.show();
     return a.exec();
 }

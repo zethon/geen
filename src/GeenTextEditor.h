@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QTextEdit>
+#include <QPlainTextEdit>
 #include <QJSEngine>
 
 namespace geen
@@ -17,21 +17,53 @@ public:
     Q_INVOKABLE QString convert(const QString& value, unsigned int base);
 };
 
-class GeenTextEditor : public QTextEdit
+class GeenTextEditor : public QPlainTextEdit
 {
+    Q_OBJECT
 
 public:
     explicit GeenTextEditor(QWidget* parent);
 
+    void lineNumberAreaPaintEvent(QPaintEvent* event);
+    int lineNumberAreaWidth();
+
 protected:
     void keyReleaseEvent(QKeyEvent* e) override;
+    void resizeEvent(QResizeEvent* event) override;
+
+private Q_SLOTS:
+    void updateLineNumberAreaWidth(int newBlockCount);
+    void highlightCurrentLine();
+    void updateLineNumberArea(const QRect& rect, int dy);
 
 private:
     void processLine(const QString& line);
 
     QJSEngine       _scriptEngine;
     QImage          _arrow;
+    QWidget*        _lineNumberArea;
 
+};
+
+class LineNumberArea : public QWidget
+{
+public:
+    LineNumberArea(GeenTextEditor* editor) : QWidget(editor), codeEditor(editor)
+    {}
+
+    QSize sizeHint() const override
+    {
+        return QSize(codeEditor->lineNumberAreaWidth(), 0);
+    }
+
+protected:
+    void paintEvent(QPaintEvent* event) override
+    {
+        codeEditor->lineNumberAreaPaintEvent(event);
+    }
+
+private:
+    GeenTextEditor* codeEditor;
 };
 
 } // namespace
