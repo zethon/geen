@@ -9,6 +9,33 @@
 namespace geen
 {
 
+Q_INVOKABLE QString BaseConverter::convert(const QString& value)
+{
+    return convert(value, 10);
+}
+
+Q_INVOKABLE QString BaseConverter::convert(const QString& value, unsigned int base)
+{
+    QString orgval = value;
+    std::uint16_t orgbase = 10;
+
+    if (auto upos = value.indexOf("_"); upos != -1)
+    {
+        orgval = value.left(upos);
+        QString tempbase = value.right((value.size() - upos)-1);
+        
+        bool bok = false;
+        orgbase = tempbase.toInt(&bok);
+        if (!bok) return "NaN";
+    }
+
+    bool bok = false;
+    auto intval = orgval.toInt(&bok, orgbase);
+    if (!bok) return "NaN"; 
+    
+    return QString::number(intval, base);
+}
+
 GeenTextEditor::GeenTextEditor(QWidget* parent)
     : QTextEdit(parent),
     _arrow{ ":/IconResource/icons/result_arrow.png" }

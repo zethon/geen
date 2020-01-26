@@ -13,10 +13,8 @@ class BaseConverter : public QObject
 public:
     BaseConverter(QObject* parent = nullptr) : QObject(parent) {};
 
-    Q_INVOKABLE QString convert(int value, unsigned int base)
-    {
-        return QString::number(value, base);
-    }
+    Q_INVOKABLE QString convert(const QString& value);
+    Q_INVOKABLE QString convert(const QString& value, unsigned int base);
 };
 
 class GeenTextEditor : public QTextEdit
