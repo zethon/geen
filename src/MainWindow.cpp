@@ -28,6 +28,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setCentralWidget(ui->textEdit);
     _highlighter = new GeenSyntaxHighlighter(ui->textEdit->document());
+
+#ifdef Q_OS_MAC
+    QFont editorFont;
+    editorFont.setPixelSize(16);
+    editorFont.setFamily("Consolas");
+    ui->textEdit->setFont(editorFont);
+#endif
+
+    QObject::connect(ui->textEdit, &QPlainTextEdit::blockCountChanged,
+        [](int newBlockCount)
+        {
+            std::cout << "newBlockCount: " << newBlockCount << '\n';
+        });
 }
 
 MainWindow::~MainWindow()

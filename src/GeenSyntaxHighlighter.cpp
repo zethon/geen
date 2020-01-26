@@ -12,6 +12,8 @@ GeenSyntaxHighlighter::GeenSyntaxHighlighter(QTextDocument* document)
 
 void GeenSyntaxHighlighter::highlightBlock(const QString& text)
 {
+    static std::vector<QChar> redSymbols = { '+', '-', '/' , '*', '=' };
+
     enum { NormalState = -1, CStyleComment };
 
     int state = previousBlockState();
@@ -32,7 +34,7 @@ void GeenSyntaxHighlighter::highlightBlock(const QString& text)
         {
             if (text.mid(i, 2) == "//")
             {
-                setFormat(i, text.length() - i, Qt::green);
+                setFormat(i, text.length() - i, Qt::darkGreen);
                 break;
             }
             else if (text.mid(i, 2) == "/*")
@@ -48,6 +50,15 @@ void GeenSyntaxHighlighter::highlightBlock(const QString& text)
                 format.setForeground(Qt::darkGreen);
                 setFormat(i, 1, format);
             }
+            else if (std::find(redSymbols.begin(), redSymbols.end(), text.mid(i,1)) != redSymbols.end())
+            {
+                QTextCharFormat format;
+                format.setFontWeight(QFont::Bold);
+                format.setForeground(Qt::darkRed);
+                setFormat(i, 1, format);
+            }
+
+
         }
     }
 }
