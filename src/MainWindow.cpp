@@ -47,7 +47,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->textEdit, &QPlainTextEdit::blockCountChanged,
         [this](int newBlockCount)
         {
-            std::cout << "newBlockCount: " << newBlockCount << '\n';
             _blockCount->setText(QString("Tot %1").arg(newBlockCount));
         });
 }

@@ -23,5 +23,6 @@
         <file>icons/changefont.png</file>
         <file>icons/colorwheel.png</file>
         <file>icons/result_arrow.png</file>
+        <file>icons/cupcake.png</file>
     </qresource>
 </RCC>

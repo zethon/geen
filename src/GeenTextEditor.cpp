@@ -153,12 +153,15 @@ void GeenTextEditor::processLine(const QString& line)
     QTextCharFormat formatter;
     formatter.setFontWeight(QFont::Bold);
     formatter.setFontItalic(true);
-    formatter.setForeground(Qt::lightGray);
+    formatter.setForeground(Qt::darkBlue);
 
-    textCursor().insertBlock();
+    //document()->firstBlock().
+    //textCursor().insertBlock();
+    //textCursor().block()
+    //auto currentBlock = document()->findBlock(textCursor().position());
 
     setCurrentCharFormat(formatter);
-    textCursor().insertText(" => " + value.toString() + "\n");
+    textCursor().insertText(" -> " + value.toString());
     setCurrentCharFormat(oldformatter);
 }
 

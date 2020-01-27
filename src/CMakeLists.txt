@@ -20,11 +20,18 @@ set(RESOURCE_FILES
     iconresource.qrc
 )
 
+if (WIN32)
+    set(EXTRA_RESOURCES
+        geen.rc
+    )
+endif(WIN32)
+
 add_executable(geen
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${UI_FILES}
     ${RESOURCE_FILES}
+    ${EXTRA_RESOURCES}
 )
 
 find_package(Qt5 REQUIRED COMPONENTS
