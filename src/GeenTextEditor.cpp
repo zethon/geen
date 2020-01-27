@@ -162,6 +162,7 @@ void GeenTextEditor::processLine(const QString& line)
 
     setCurrentCharFormat(formatter);
     textCursor().insertText(" -> " + value.toString());
+    textCursor().insertBlock();
     setCurrentCharFormat(oldformatter);
 }
 

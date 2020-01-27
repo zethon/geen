@@ -25,6 +25,8 @@ public:
 private Q_SLOTS:
     void on_actionExit_triggered();
 
+private:
+    void initStatusBar();
 
 private:
     Ui::MainWindow *ui;

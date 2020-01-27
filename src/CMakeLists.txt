@@ -7,6 +7,7 @@ set(SOURCE_FILES
 )
 
 set(HEADER_FILES
+    Core.h
     GeenSyntaxHighlighter.h
     GeenTextEditor.h
     MainWindow.h
@@ -26,7 +27,7 @@ if (WIN32)
     )
 endif(WIN32)
 
-add_executable(geen
+add_executable(Geen
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${UI_FILES}
@@ -39,7 +40,7 @@ find_package(Qt5 REQUIRED COMPONENTS
     Widgets
 )
 
-target_link_libraries(geen
+target_link_libraries(Geen
     Qt5::Qml
     Qt5::Widgets
 )

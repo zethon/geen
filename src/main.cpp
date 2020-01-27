@@ -2,8 +2,10 @@
 #undef QT_NO_DEBUG_OUTPUT
 #endif
 
-#include "MainWindow.h"
 #include <QApplication>
+
+#include "Core.h"
+#include "MainWindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +13,7 @@ int main(int argc, char *argv[])
     geen::MainWindow w;
 
     w.setWindowIcon(QIcon(":/IconResource/icons/cupcake.png"));
-    w.setWindowTitle(QObject::tr("geen text tool"));
+    w.setWindowTitle(APP_TITLE);
 
     w.show();
     return a.exec();

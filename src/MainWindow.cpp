@@ -38,18 +38,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textEdit->setFont(editorFont);
 #endif
 
-    _blockCount = new QLabel(this);
-    _blockCount->setStyleSheet("QLabel { color: #FFFFFF; }");
-    _blockCount->setText(QString("Tot %1").arg(ui->textEdit->blockCount()));
-    ui->statusBar->addWidget(_blockCount);
-    ui->statusBar->setStyleSheet("QStatusBar { background: #007ACD; color: #FFFFFF; }");
-
-    QObject::connect(ui->textEdit, &QPlainTextEdit::blockCountChanged,
-        [this](int newBlockCount)
+    // initialization to be done after the window has been painted
+    QTimer::singleShot(0,
+        [this]()
         {
-            _blockCount->setText(QString("Tot %1").arg(newBlockCount));
+            this->initStatusBar();
         });
 }
+
+
 
 MainWindow::~MainWindow()
 {
@@ -59,6 +56,30 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionExit_triggered()
 {
     QGuiApplication::exit();
+}
+
+void MainWindow::initStatusBar()
+{
+    _blockCount = new QLabel(this);
+    _blockCount->setStyleSheet("QLabel { color: #FFFFFF; }");
+    _blockCount->setText(QString("Ln %1, Col %2    Lines: %3")
+        .arg(1).arg(1).arg(1));
+
+    ui->statusBar->addWidget(_blockCount);
+    ui->statusBar->setStyleSheet("QStatusBar { background: #007ACD; color: #FFFFFF; }");
+
+    QObject::connect(ui->textEdit, &QPlainTextEdit::cursorPositionChanged,
+        [this]()
+        {
+            auto blocknumber = this->ui->textEdit->textCursor().blockNumber() + 1;
+            auto posinblock = this->ui->textEdit->textCursor().positionInBlock() + 1;
+
+            _blockCount->setText(QString("Ln %1, Col %2    Lines: %3")
+                .arg(blocknumber)
+                .arg(posinblock)
+                .arg(ui->textEdit->blockCount()));
+
+        });
 }
 
 }
