@@ -86,7 +86,7 @@ void GeenTextEditor::lineNumberAreaPaintEvent(QPaintEvent* event)
 
 int GeenTextEditor::lineNumberAreaWidth()
 {
-    return fontMetrics().horizontalAdvance(QLatin1Char('9')) * 6;
+    return fontMetrics().horizontalAdvance(QLatin1Char('W')) * 7;
 }
 
 void GeenTextEditor::keyReleaseEvent(QKeyEvent* e)

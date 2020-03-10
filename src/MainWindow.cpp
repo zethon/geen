@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setCentralWidget(ui->textEdit);
+//    setCentralWidget(ui->textEdit);
     _highlighter = new GeenSyntaxHighlighter(ui->textEdit->document());
 
 #ifdef Q_OS_MAC
