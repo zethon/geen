@@ -122,6 +122,22 @@ void GeenTextEditor::updateLineNumberAreaWidth(int)
 
 void GeenTextEditor::highlightCurrentLine()
 {
+    QList<QTextEdit::ExtraSelection> extraSelections;
+
+    if (!isReadOnly()) 
+    {
+        QTextEdit::ExtraSelection selection;
+
+        QColor lineColor = QColor(Qt::yellow).lighter(175);
+
+        selection.format.setBackground(lineColor);
+        selection.format.setProperty(QTextFormat::FullWidthSelection, true);
+        selection.cursor = textCursor();
+        selection.cursor.clearSelection();
+        extraSelections.append(selection);
+    }
+
+    setExtraSelections(extraSelections);
 }
 
 void GeenTextEditor::updateLineNumberArea(const QRect& rect, int dy)
@@ -145,15 +161,22 @@ void GeenTextEditor::processLine(const QString& line)
 {
     if (line.isEmpty()) return;
 
+    if (line.toLower() == "/quit"
+        || line.toLower() == "/q")
+    {
+        QGuiApplication::exit();
+        return;
+    }
+
     QJSValue value = _scriptEngine.evaluate(line);
 
     moveCursor(QTextCursor::EndOfLine);
     auto oldformatter = currentCharFormat();
 
     QTextCharFormat formatter;
-    formatter.setFontWeight(QFont::Bold);
+    formatter.setFontWeight(QFont::Normal);
     formatter.setFontItalic(true);
-    formatter.setForeground(Qt::darkBlue);
+    formatter.setForeground(Qt::darkGray);
 
     //document()->firstBlock().
     //textCursor().insertBlock();
