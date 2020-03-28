@@ -49,6 +49,11 @@ GeenTextEditor::GeenTextEditor(QWidget* parent)
 
     _lineNumberArea = new LineNumberArea(this);
 
+#ifdef Q_OS_MAC
+    _lineNumberFont.setFamily("Menlo,Consolas");
+    _lineNumberFont.setPointSize(16);
+#endif
+
     connect(this, &GeenTextEditor::blockCountChanged, this, &GeenTextEditor::updateLineNumberAreaWidth);
     connect(this, &GeenTextEditor::updateRequest, this, &GeenTextEditor::updateLineNumberArea);
     connect(this, &GeenTextEditor::cursorPositionChanged, this, &GeenTextEditor::highlightCurrentLine);
@@ -61,6 +66,7 @@ void GeenTextEditor::lineNumberAreaPaintEvent(QPaintEvent* event)
 {
     QPainter painter(_lineNumberArea);
     painter.fillRect(event->rect(), QColor(250,250,250));
+    painter.setFont(_lineNumberFont);
 
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
@@ -72,6 +78,7 @@ void GeenTextEditor::lineNumberAreaPaintEvent(QPaintEvent* event)
         if (block.isVisible() && bottom >= event->rect().top()) 
         {
             QString number = QString::number(blockNumber + 1);
+
             painter.setPen(Qt::darkCyan);
             painter.drawText(0, top, _lineNumberArea->width() - 15, fontMetrics().height(),
                 Qt::AlignRight, number);

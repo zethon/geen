@@ -42,6 +42,7 @@ private:
     QJSEngine       _scriptEngine;
     QImage          _arrow;
     QWidget*        _lineNumberArea;
+    QFont           _lineNumberFont;
 
 };
 
