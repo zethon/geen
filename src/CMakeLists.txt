@@ -4,6 +4,7 @@ set(SOURCE_FILES
     GeenTextEditor.cpp
     MainWindow.cpp
     main.cpp
+    TabWidget.cpp
 )
 
 set(HEADER_FILES
@@ -11,6 +12,7 @@ set(HEADER_FILES
     GeenSyntaxHighlighter.h
     GeenTextEditor.h
     MainWindow.h
+    TabWidget.h
 )
 
 set(UI_FILES

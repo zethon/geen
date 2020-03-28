@@ -36,7 +36,7 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="geen::GeenTabWidget" name="tabWidget">
       <property name="styleSheet">
        <string notr="true">
 QTabWidget::pane 
@@ -192,7 +192,7 @@ QTabBar::tab:left:only-one, QTabBar::tab:right:only-one {
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -413,6 +413,12 @@ QTabBar::tab:left:only-one, QTabBar::tab:right:only-one {
    <class>geen::GeenTextEditor</class>
    <extends>QPlainTextEdit</extends>
    <header>GeenTextEditor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>geen::GeenTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>TabWidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
