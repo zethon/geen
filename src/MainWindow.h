@@ -27,6 +27,8 @@ private Q_SLOTS:
 
 private:
     void initStatusBar();
+    void initMainMenu();
+    void initNewMenu(QMenu* menu);
 
 private:
     Ui::MainWindow *ui;

@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    setCentralWidget(ui->textEdit);
     _highlighter = new GeenSyntaxHighlighter(ui->textEdit->document());
 
 #ifdef Q_OS_MAC
@@ -42,11 +41,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(0,
         [this]()
         {
+            this->initMainMenu();
             this->initStatusBar();
         });
 }
-
-
 
 MainWindow::~MainWindow()
 {
@@ -80,6 +78,45 @@ void MainWindow::initStatusBar()
                 .arg(ui->textEdit->blockCount()));
 
         });
+}
+
+void MainWindow::initMainMenu()
+{
+    auto mainMenu = menuBar();
+
+    // File Menu
+    {
+        auto fileMenu = mainMenu->findChild<QMenu*>("menuFile", Qt::FindDirectChildrenOnly);
+        Q_ASSERT(fileMenu);
+
+        auto newMenu = fileMenu->addMenu(QIcon{":/IconResource/icons/new.png" }, "New");
+        initNewMenu(newMenu);
+
+
+        fileMenu->addAction(QIcon{":/IconResource/icons/open.png" }, "Open");
+        fileMenu->addSeparator();
+        fileMenu->addAction(QIcon{":/IconResource/icons/Save.png" }, "Save");
+        fileMenu->addAction(QIcon{":/IconResource/icons/saveas.png" }, "Save as ..");
+        fileMenu->addSeparator();
+
+        auto quitAction = fileMenu->addAction(QIcon{":/IconResource/icons/exit.png" }, "Exit");
+        quitAction->setMenuRole(QAction::QuitRole);
+        quitAction->setShortcut(QKeySequence::Quit);
+        QObject::connect(quitAction, &QAction::triggered,[this]() { close(); });
+    }
+}
+
+void MainWindow::initNewMenu(QMenu* menu)
+{
+    {
+        auto document = menu->addAction("Document");
+        QObject::connect(document, &QAction::triggered,[]() { qDebug() << "new Document"; });
+    }
+
+    {
+        auto document = menu->addAction("Clipboard Monitor");
+        QObject::connect(document, &QAction::triggered,[]() { qDebug() << "new Clipboard Monitor"; });
+    }
 }
 
 }
